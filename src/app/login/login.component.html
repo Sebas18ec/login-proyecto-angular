@@ -14,11 +14,11 @@
         </div>
         <div class="form-group">
             <label for="username">EMISOR</label>
-          
-            <select class="form-control" id="selectRole">
-              <option>Admin</option>
-              <option>User</option>
-            </select>
+              <br>
+              <select class="form-select" [(ngModel)]="selectedEmisor" name="emisorSelect">
+                <option *ngFor="let emisor of emisores" [value]="emisor.id">{{ emisor.NombreEmisor }}</option>
+              </select>
+            
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         
