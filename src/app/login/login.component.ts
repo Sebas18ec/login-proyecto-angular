@@ -11,6 +11,9 @@ export class LoginComponent {
   
   emisores: any;
   selectedEmisor: any;
+  usuario: any;
+  contrasena: any;
+  mensajeError: any;
 
   constructor(private http: HttpClient) { }
 
@@ -21,38 +24,20 @@ export class LoginComponent {
         console.log(this.emisores); 
       });
   }
-/*  
-  emisores: any[] = [];
-  selectedEmisor: any;
-  username: string = '';
-  password: string = '';
-  
 
-  constructor(private http: HttpClient) { }
-
-  emisorSeleccionado(emisor: any) {
-    this.selectedEmisor = emisor;
-  }
-  
-
-  getEmisores() {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    this.http.get<any>('api/ControladorAPI/api/v1/emisores', { headers })
-  .subscribe(data => {
-    this.emisores = data.map(emisor => emisor.nombreEmisor);
-  });
-
-  }
-  
-  ngOnInit() {
-    this.getEmisores();
-    
-    
-  }
-  
-  */
 
   onSubmit() {
-    // Aquí iría la lógica para validar el usuario y la contraseña ingresados
+    const loginData = {
+      username: this.usuario,
+      password: this.contrasena
+    };
+    console.log(this.usuario,this.contrasena);
+    this.http.post('/api/ControladorAPI/login', loginData)
+      .subscribe(response => {
+        console.log(response);
+      }, error => {
+        console.log(error);
+      });
   }
+  
 }

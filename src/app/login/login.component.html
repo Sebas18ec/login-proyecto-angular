@@ -2,27 +2,25 @@
   <div class="row">
     <div class="col-md-4 offset-md-4">
       <h2>Login</h2>
-      <form>
-        
+      <form (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="username">USUARIO</label>
-          <input type="text" class="form-control" id="username">
+          <input type="text" class="form-control" id="username" [(ngModel)]="usuario" name="usuario">
         </div>
         <div class="form-group">
           <label for="password">CONTRASEÑA</label>
-          <input type="password" class="form-control" id="password">
+          <input type="password" class="form-control" id="password" [(ngModel)]="contrasena" name="contrasena">
         </div>
         <div class="form-group">
-            <label for="username">EMISOR</label>
-              <br>
-              <select class="form-select" [(ngModel)]="selectedEmisor" name="emisorSelect">
-                <option *ngFor="let emisor of emisores" [value]="emisor.id">{{ emisor.NombreEmisor }}</option>
-              </select>
-            
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        
+          <label for="username">EMISOR</label>
+          <br>
+          <select class="form-select" [(ngModel)]="selectedEmisor" name="emisorSelect">
+            <option *ngFor="let emisor of emisores" [value]="emisor.id">{{ emisor.NombreEmisor }}</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+      
     </div>
   </div>
 </div>
