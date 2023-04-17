@@ -2,3 +2,34 @@
 .welcome-message{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+nav {
+    background-color: #333; /* Cambiar por el color que desees */
+    width: 100%;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    flex: 1;
+  }
+  
+  nav a {
+    color: white;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .logo {  
+    display: inline-block;  
+    height: 6rem;  
+    margin-right: 10px;  
+    vertical-align: middle;  
+  }  
+  
