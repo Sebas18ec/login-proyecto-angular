@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-
+import { EmisorService } from '../shared/emisor.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   password!: string;  
   
    
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private emisorService: EmisorService,private router: Router) { }
 
   ngOnInit() {
     this.http.get<any>('api/ControladorAPI/api/v1/emisores')
@@ -43,6 +44,20 @@ export class LoginComponent {
       .subscribe(response => {
         console.log(response);
         alert('¡Inicio de sesión exitoso!');
+      
+      const data = JSON.stringify(response);
+      const responseObj = JSON.parse(data);
+    
+      const emisorData = {
+      nombre: responseObj[0].NOMBREEMISOR,
+      ruc: responseObj[0].RucUsuario,
+    };
+    
+
+    this.emisorService.updateEmisorData(emisorData);
+    this.router.navigate(['/home']); // aquí se navega a la ruta /home
+
+
       }, error => {
         console.log(error);
         alert('¡Inicio de sesión fallido!');
