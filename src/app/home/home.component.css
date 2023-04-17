@@ -1,7 +1,33 @@
 
-.welcome-message{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+
+.welcome-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Altura del contenedor */
+  }
+  
+  .welcome-message {
+    text-align: center;
+  }
+  
+  .welcome-message {
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  .welcome-message h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .welcome-message p {
+    font-size: 1.5em;
+    color: #777;
+  }
+  
 nav {
     background-color: #333; /* Cambiar por el color que desees */
     width: 100%;
