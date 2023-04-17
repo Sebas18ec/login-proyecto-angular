@@ -11,10 +11,11 @@ export class LoginComponent {
   
   emisores: any;
   selectedEmisor: any;
-  usuario: any;
-  contrasena: any;
   mensajeError: any;
-
+  username!: string;  
+  password!: string;  
+  
+   
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -27,17 +28,27 @@ export class LoginComponent {
 
 
   onSubmit() {
+    if (!this.username || !this.password) {
+      alert('Por favor, ingrese un usuario y contraseña');
+      return;
+    }
+  
     const loginData = {
-      username: this.usuario,
-      password: this.contrasena
+      usuario: this.username,
+      contrasena: this.password
     };
-    console.log(this.usuario,this.contrasena);
+    
+    console.log(loginData.usuario,loginData.contrasena);
     this.http.post('/api/ControladorAPI/login', loginData)
       .subscribe(response => {
         console.log(response);
+        alert('¡Inicio de sesión exitoso!');
       }, error => {
         console.log(error);
+        alert('¡Inicio de sesión fallido!');
       });
   }
+  
+  
   
 }
