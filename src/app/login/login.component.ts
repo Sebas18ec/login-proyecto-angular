@@ -24,8 +24,25 @@ export class LoginComponent {
   constructor(private http: HttpClient,private sanitizer: DomSanitizer,private emisorService: EmisorService,private router: Router) { 
     this.selectedEmisor= '';
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');  
+    
 
   }
+
+
+ 
+
+  onlyNumbers(event: KeyboardEvent) {
+    const input = event.key;
+    const isNumber = /^[0-9]+$/.test(input);
+    const isAllowedKey = event.code === 'Backspace' || event.code === 'Delete' || event.code === 'Tab';
+  
+    if (!isNumber && !isAllowedKey) {
+      event.preventDefault();
+    }
+  }
+  
+  
+
 
   ngOnInit() {
     this.http.get<any>('api/ControladorAPI/api/v1/emisores')
@@ -33,6 +50,7 @@ export class LoginComponent {
         this.emisores = data.map(emisor => emisor.NombreEmisor);
         console.log(this.emisores); 
       });
+      this.selectedEmisor = this.emisores[0].NombreEmisor;
   }
   
 
